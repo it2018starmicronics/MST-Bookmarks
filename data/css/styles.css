@@ -1,0 +1,162 @@
+<style>
+
+/* Global reset and font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Layout-specific settings */
+  html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+  body {
+    display: flex;
+    height: 100vh;
+    margin: 0; /* Add this */
+    padding: 0; /* Optional, for safety */
+  }
+
+  /* Sidebar */
+  #sidebar {
+    width: 250px;
+    background-color: #fafafa;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f1f1f1;
+    position: sticky;
+    top: 1;
+    z-index: 1;
+  }
+
+  .sidebar-header img {
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  .sidebar-header h1 {
+    font-size: 18px;
+    margin: 0;
+    color: #3045A1
+  }
+
+  .sidebar-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px 15px;
+  }
+
+  .menu-category {
+    margin-bottom: 10px;
+  }
+
+  /* --- Menu Header --- */
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 0px;
+    color: #3045A1;
+    
+  }
+
+  .menu-header::after {
+    content: "►";
+    transition: transform 0.2s;
+  }
+
+  .menu-header.open::after {
+    content: "▼";
+  }
+
+  .submenu {
+    display: none;
+    padding-left: 15px;
+   
+  }
+
+  .menu-header.open + .submenu {
+    display: block;
+  }
+
+  /* --- Submenu and Sub-submenu links --- */
+  .submenu a,
+  .sub-submenu a {
+    display: block;
+    margin-bottom: 1px;
+    color: #0077cc;
+    text-decoration: none;
+  }
+
+  .submenu a:hover,
+  .sub-submenu a:hover {
+    text-decoration: underline;
+  }
+
+  #sidebar a {
+    color: #0077cc;
+    text-decoration: none;
+  }
+
+  #sidebar a:hover {
+    text-decoration: underline;
+  }
+
+  /* --- Submenu Header (with Sub-submenu) --- */
+  .has-sub-submenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .has-sub-submenu::after {
+    content: "►";
+    transition: transform 0.2s;
+    font-size: 12px;
+  }
+
+  .has-sub-submenu.open::after {
+    content: "▼";
+  }
+
+  /* Sub-submenu content block */
+  .sub-submenu {
+    display: none;
+    padding-left: 20px;
+  }
+
+  .has-sub-submenu.open + .sub-submenu {
+    display: block;
+  }
+
+  /* Main content area */
+  #content {
+    flex-grow: 1;
+    height: 100%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+</style>

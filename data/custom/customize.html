@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Customize Your Menu</title>
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div id="layout">
+    <!-- Left panel: Menu -->
+    <div id="customizer-container">
+      <h2>Customize Menu</h2>
+
+      <ul id="menu-customizer">
+        <li data-id="start-of-day">Start of Day <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="starmicronics">StarMicronics.com <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="online-manuals">Online Manuals <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="led-errors">LED Errors <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="thermal-receipt">Thermal Receipt <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="label-printers">Label Printers <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="impact-printers">Impact Printers <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="portable-printers">Portable Printers <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="mltifunctional-system">Multifunctional System <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="kiosk-printers">Kiosk Printers <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="cups-for-macos">CUPS for macOS <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="chromeos">ChromeOS <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="cash-drawers">Cash Drawers <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="scanners">Scanners <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="accessories">Accessories <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="pos-support">POS Support <input type="checkbox" class="menu-toggle" checked></li>
+        <li data-id="settings" class="fixed-item">Settings</li>
+      </ul>
+
+      <div class="button-container">
+        <button onclick="saveAndReturn()">Save</button>
+        <button class="reset-button" onclick="resetMenu()">Reset</button>
+      </div>
+
+      <div id="save-message">Current settings saved.</div>
+    </div>
+
+    <!-- Right panel: Instructions -->
+    <div id="instructions" style="width: 600px; height: auto; position: absolute; top: 20px; left: 20px; white-space: nowrap;">
+      <h3>How to Customize</h3>
+      <p><strong>✔ Show/Hide:</strong> Use the checkboxes to show or hide specific menu items.</p>
+      <p><strong>↕ Reorder:</strong> Drag and drop any item to reorder it in your menu.</p>
+      <p><strong>💾 Save:</strong> Click <em>Save</em> to apply changes to the main page.</p>
+      <p><strong>🔁 Reset:</strong> Click <em>Reset</em> to restore the original layout.</p>
+      <p>Changes are saved locally and will persist until manually reset.</p>
+    </div>
+  </div>
+
+  <script src="js/Sortable.min.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>

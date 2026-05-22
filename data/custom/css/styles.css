@@ -1,0 +1,152 @@
+  <style>
+body {
+  overflow: hidden;   /*remove if you have overflow content so that id does not get cut off */
+}
+
+/* ========== Reset & Layout ========== */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #070570;    /* blue */
+}
+
+#layout {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ========== LEFT: Menu Customizer ========== */
+#customizer-container {
+  width: 280px;
+  padding: 0.5rem;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+ background-color: #e6f0ff; /*  light blue */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 0rem;
+  font-weight: bold;
+  color: #3045A1;
+}
+
+#menu-customizer {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+#menu-customizer li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3px 12px;
+  margin-bottom: 5px;
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: move;
+  transition: background 0.2s;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
+  color: #3045A1;
+}
+
+#menu-customizer li:hover {
+  background: #e0e0e0;
+}
+
+.menu-toggle {
+  accent-color: #0078d4;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.fixed-item {
+  color: #888;
+  font-style: italic;
+  cursor: default;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.button-container button {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  background-color: #0078d4;
+  border: none;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+  background-color: #005ea1;
+}
+
+.reset-button {
+  background-color: #aaa;
+}
+
+.reset-button:hover {
+  background-color: #888;
+}
+
+#save-message {
+  display: none;
+  color: green;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ========== RIGHT: Fixed Instructions ========== */
+#instructions {
+  width: 700px;               /* Fixed width */
+  min-width: 700px;
+  max-width: 700px;
+  height: calc(100vh - 80px);              /* Full height */
+  padding: 20px;
+  padding-top: 20px;
+  margin-left: 260px;   /*move to the right */
+  margin-top: 80px;	/* move up or down */
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  white-space: normal;        /* Allow wrapping in paragraphs */
+  box-sizing: border-box;
+  background-color: #fffbe6;   /* soft yellow */
+}
+
+#instructions h3 {
+  margin-top: 0;
+  color: #3045A1;
+}
+
+#instructions p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* ========== Disable Responsive Behavior ========== */
+@media (max-width: 600px) {
+  #layout {
+    flex-direction: row;  /* Keep row even on small screens */
+  }
+</style>
