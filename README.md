@@ -8,4 +8,4 @@ After deployment, the site is available at:
 
 **https://it2018starmicronics.github.io/MST-Bookmarks/**
 
-The main app loads from `BookMarks.html`. Use **Customize Menu** in Settings to reorder or hide categories (saved in browser `localStorage`).
+The main app loads from `index.html`. Use **Customize Menu** in Settings to reorder or hide categories (saved in browser `localStorage`).
