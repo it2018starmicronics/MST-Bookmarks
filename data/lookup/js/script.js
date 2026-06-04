@@ -136,9 +136,6 @@ function lookupSerial() {
         <div><span class="label">Serial Number:</span> ${foundSerial.SerialNumber}</div>
         <div><span class="label">Product:</span> ${foundSerial.Product}</div>
         <div><span class="label">Product Name:</span> ${foundSerial.ProductName}</div>
-        <div><span class="label">Product Class:</span> ${foundSerial.ProductClass}</div>
-        <div><span class="label">Rep Class:</span> ${foundSerial.RepClas}</div>
-        <div><span class="label">Interface:</span> ${foundSerial.Interace}</div>
     `;
 
     if (!foundModel) {
