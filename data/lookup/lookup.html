@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serial Number Lookup</title>
+
+<link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+<div class="page-layout">
+
+    <!-- LEFT PANEL -->
+    <div id="left-panel" class="side-panel">
+        <h2>Resources</h2>
+        <!-- Dynamic links will be inserted here -->
+    </div>
+
+    <!-- CENTER PANEL -->
+    <div class="container">
+        <h1>Serial Number</h1>
+
+        <input 
+            type="text" 
+            id="serialInput" 
+            placeholder="Enter Serial Number"
+            autofocus
+        >
+
+        <button onclick="lookupSerial()">Lookup</button>
+
+        <div id="result"></div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div id="right-panel" class="side-panel">
+        <h2>Quick Links</h2>
+        <!-- Dynamic links will be inserted here -->
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+
+
+</body>
+</html>

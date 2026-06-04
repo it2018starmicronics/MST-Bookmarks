@@ -7,7 +7,7 @@
     "thermal-receipt", "label-printers", "impact-printers",
     "portable-printers", "mltifunctional-system", "kiosk-printers",
     "cups-for-macos", "chromeos", "cash-drawers", 
-    "scanners", "accessories", "pos-support"
+    "scanners", "accessories", "pos-support", "misc"
   ];
 
   const defaultVisibility = defaultOrder.reduce((acc, id) => {
