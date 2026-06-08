@@ -5,7 +5,7 @@
     "start-of-day", "starmicronics", "online-manuals", "led-errors",
     
     "thermal-receipt", "label-printers", "impact-printers",
-    "portable-printers", "mltifunctional-system", "kiosk-printers",
+    "portable-printers", "mltifunctional-system", "kiosk-printers", "kiosk-scanners", 
     "cups-for-macos", "chromeos", "cash-drawers", 
     "scanners", "accessories", "pos-support", "misc"
   ];
