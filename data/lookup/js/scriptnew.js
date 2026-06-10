@@ -8,7 +8,8 @@ let modelData = [];
 /**************************************************
  * Menu Configuration – 4 Columns
  **************************************************/
-const setupMenu = [ // Setup & Installation
+const setupMenu = [
+    { field: "support", label: "Support" },
     { field: "productp", label: "Product Page" },
     { field: "manual", label: "Manual" },
     { field: "winsetup", label: "Win Setup" },
@@ -20,41 +21,40 @@ const setupMenu = [ // Setup & Installation
     { field: "usbwinsetup", label: "USB Win Setup" },
     { field: "usbmacsetup", label: "USB Mac Setup" },
     { field: "nowps", label: "No WPS Setup" },
-    { field: "wps", label: "WPS Setup" },
-    { field: "pairios", label: "Pair with iOS" }
+    { field: "wps", label: "WPS Setup" }
 ];
 
-const networkMenu = [ // Network & Connectivity
+const networkMenu = [
     { field: "staticip", label: "Assign Static IP" },
     { field: "autoconnect", label: "Auto Connect ON/OFF" },
     { field: "resetnetwork", label: "Reset Network" },
     { field: "resetbt", label: "Reset BT" },
     { field: "resetbtnetwork", label: "Reset BT & Network" },
     { field: "btmode", label: "Change BT Mode" },
-    { field: "wifidongle", label: "Setup WiFi Dongle" },
     { field: "cloudprnt", label: "CloudPRNT Setup" },
     { field: "webprnt", label: "WebPRNT Setup" },
-    { field: "cloudprntdemo", label: "CloudPRNT Demo" }
+    { field: "cloudprntdemo", label: "CloudPRNT Demo" },
+    { field: "wifidongle", label: "Setup WiFi Dongle" },
+    { field: "pairios", label: "Pair with iOS" }
 ];
 
-const maintenanceMenu = [ // Device Maintenance & Troubleshooting
-    { field: "lederrors", label: "LED Errors" },
-    { field: "missingdots", label: "Faded/Missing Dots" },
-    { field: "maintenance", label: "Maintenance" },
-    { field: "cut", label: "Cutter Reset" },
-    { field: "resetpinwin", label: "Reset PIN on Win" },
-    { field: "dhcp", label: "Disable DHCP Timeout" }
-];
-
-const advancedMenu = [ // Advanced Features & Settings
+const maintenanceMenu = [
     { field: "density", label: "Density Adjustment" },
     { field: "firmware", label: "Firmware Update" },
+    { field: "cut", label: "Cutter Reset" },
     { field: "opos", label: "OPOS Setup" },
     { field: "holdprint", label: "Enb/Dsbl HoldPrint" },
     { field: "emulation", label: "Change Emulation" },
-    { field: "margins", label: "Browser Margins" },
-    { field: "quicksetup", label: "Quick Setup Utility" }, // new item
-    { field: "sdk", label: "StarPRNT SDK" }
+    { field: "sdk", label: "StarPRNT SDK" },
+    { field: "maintenance", label: "Maintenance" },
+    { field: "missingdots", label: "Faded/Missing Dots" },
+    { field: "dhcp", label: "Disable DHCP Timeout" },
+    { field: "resetpinwin", label: "Reset PIN on Win" }
+];
+
+const advancedMenu = [
+    { field: "lederrors", label: "LED Errors" },
+    { field: "margins", label: "Browser Margins" }
 ];
 
 /**************************************************
@@ -120,9 +120,9 @@ function lookupSerial() {
     const foundModel = modelData.find(x => x.product === foundSerial.Product);
 
     document.getElementById('result').innerHTML = `
-
+        <div><span class="label">Serial Number:</span> ${foundSerial.SerialNumber}</div>
         <div><span class="label">Product:</span> ${foundSerial.Product}</div>
-
+        <div><span class="label">Product Name:</span> ${foundSerial.ProductName}</div>
     `;
     document.getElementById("result").style.display = "block";
 

@@ -3,7 +3,7 @@
 ========================= */
 body {
     font-family: Arial, sans-serif;
-    background-color: #070570;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 30px;
     color: #3045A1;
@@ -17,9 +17,6 @@ h1, h2 {
 /* =========================
    TOP LOOKUP ROW
 ========================= */
-/* =========================
-   TOP LOOKUP ROW FIX
-========================= */
 .lookup-row {
     display: flex;
     align-items: flex-start;
@@ -27,15 +24,13 @@ h1, h2 {
     margin-bottom: 30px;
 }
 
-/* Serial Input Container */
 .lookup-input {
-    flex: 0 0 auto; /* do not stretch */
+    flex: 1;
+    min-width: 250px;
 }
 
-/* Input field */
 .lookup-input input {
-    width: 150px;      /* fixed width */
-    max-width: 100%;   /* responsive on small screens */
+    width: 100%;
     padding: 12px;
     font-size: 20px;
     box-sizing: border-box;
@@ -62,31 +57,28 @@ h1, h2 {
     background-color: #005ea6;
 }
 
-/* Results box */
 .lookup-results {
-    flex: 0;           /* takes remaining space */
-    min-width: 265px;
+    flex: 1;
+    min-width: 250px;
     background: #f9f9f9;
-    background-color: #fffbe6;
-    padding: 5px;
-    border-radius: 35px;
-    font-size: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 18px;
     line-height: 1.8;
-    display: none;     /* hidden initially */
 }
 
 /* =========================
    PAGE LAYOUT - 4 COLUMNS
 ========================= */
 .page-layout {
-    display: none; /* hidden initially */
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
 
 /* RESOURCE PANELS */
 .resource-panel {
-    background: #e6f0ff;
+    background: white;
     font-weight: bold;
     padding: 20px;
     border-radius: 10px;

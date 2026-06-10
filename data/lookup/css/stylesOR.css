@@ -1,0 +1,111 @@
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 30px;
+}
+
+/* PAGE LAYOUT */
+.page-layout {
+    display: flex;
+    gap: 10px; /* space between left, center, right panels - adjust as needed */
+    align-items: flex-start;
+}
+
+/* CENTER LOOKUP BOX */
+.container {
+    max-width: 250px;
+    flex: 2;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    color: #3045A1;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* SIDE BOXES */
+.side-panel {
+    max-width: 250px;
+    flex: 1;
+    background: white;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+    color: #3045A1;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* HEADERS */
+h1, h2 {
+    margin-top: 0;
+}
+
+/* INPUT */
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+/* LOOKUP BUTTON (CENTER ONLY) */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #0078d7;  /* CHANGE THIS for lookup button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #005ea6;
+}
+
+/* LEFT + RIGHT LINKS (SIDE BUTTONS) */
+:root {
+    --side-button-gap: -10px; /* CHANGE THIS to adjust spacing between side buttons */
+}
+
+.resource-link {
+    display: block;
+    padding: 12px;
+    margin-bottom: var(--side-button-gap);
+    background: #3045A1;  /* CHANGE THIS for side buttons */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.resource-link:hover {
+    background: #1f7a32;
+}
+
+/* RESULT BOX */
+#result {
+    margin-top: -15px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #3045A1;
+    line-height: 1.8;
+}
+
+/* LABELS */
+.label {
+    font-weight: bold;
+}
+
+/* NOT FOUND */
+.not-found {
+    color: red;
+    font-weight: bold;
+}
+</style>

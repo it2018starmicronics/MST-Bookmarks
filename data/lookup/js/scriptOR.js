@@ -6,9 +6,10 @@ let serialData = [];
 let modelData = [];
 
 /**************************************************
- * Menu Configuration – 4 Columns
+ * Menu Configuration
  **************************************************/
-const setupMenu = [ // Setup & Installation
+const leftMenu = [
+    { field: "support", label: "Support" },
     { field: "productp", label: "Product Page" },
     { field: "manual", label: "Manual" },
     { field: "winsetup", label: "Win Setup" },
@@ -21,40 +22,34 @@ const setupMenu = [ // Setup & Installation
     { field: "usbmacsetup", label: "USB Mac Setup" },
     { field: "nowps", label: "No WPS Setup" },
     { field: "wps", label: "WPS Setup" },
-    { field: "pairios", label: "Pair with iOS" }
-];
-
-const networkMenu = [ // Network & Connectivity
+    { field: "lederrors", label: "LED Errors" },
     { field: "staticip", label: "Assign Static IP" },
     { field: "autoconnect", label: "Auto Connect ON/OFF" },
     { field: "resetnetwork", label: "Reset Network" },
     { field: "resetbt", label: "Reset BT" },
-    { field: "resetbtnetwork", label: "Reset BT & Network" },
-    { field: "btmode", label: "Change BT Mode" },
-    { field: "wifidongle", label: "Setup WiFi Dongle" },
-    { field: "cloudprnt", label: "CloudPRNT Setup" },
-    { field: "webprnt", label: "WebPRNT Setup" },
-    { field: "cloudprntdemo", label: "CloudPRNT Demo" }
+    { field: "resetbtnetwork", label: "Reset BT & Network" }
 ];
 
-const maintenanceMenu = [ // Device Maintenance & Troubleshooting
-    { field: "lederrors", label: "LED Errors" },
-    { field: "missingdots", label: "Faded/Missing Dots" },
-    { field: "maintenance", label: "Maintenance" },
-    { field: "cut", label: "Cutter Reset" },
-    { field: "resetpinwin", label: "Reset PIN on Win" },
-    { field: "dhcp", label: "Disable DHCP Timeout" }
-];
-
-const advancedMenu = [ // Advanced Features & Settings
+const rightMenu = [
     { field: "density", label: "Density Adjustment" },
     { field: "firmware", label: "Firmware Update" },
+    { field: "cut", label: "Cutter Reset" },
     { field: "opos", label: "OPOS Setup" },
     { field: "holdprint", label: "Enb/Dsbl HoldPrint" },
     { field: "emulation", label: "Change Emulation" },
+    { field: "btmode", label: "Change BT Mode" },
     { field: "margins", label: "Browser Margins" },
-    { field: "quicksetup", label: "Quick Setup Utility" }, // new item
-    { field: "sdk", label: "StarPRNT SDK" }
+    { field: "sqsu", label: "Quick Setup Utility" },
+    { field: "sdk", label: "StarPRNT SDK" },
+    { field: "maintenance", label: "Maintenance" },
+    { field: "missingdots", label: "Faded/Missing Dots" },
+    { field: "dhcp", label: "Disable DHCP Timeout" },
+    { field: "cloudprnt", label: "CloudPRNT Setup" },
+    { field: "webprnt", label: "WebPRNT Setup" },
+    { field: "cloudprntdemo", label: "CloudPRNT Demo" },
+    { field: "wifidongle", label: "Setup WiFi Dongle" },
+    { field: "pairios", label: "Pair with iOS" },
+    { field: "resetpinwin", label: "Reset PIN on Win" }
 ];
 
 /**************************************************
@@ -62,6 +57,7 @@ const advancedMenu = [ // Advanced Features & Settings
  **************************************************/
 async function loadCSV() {
     try {
+
         const serialResp = await fetch('info/serials.csv');
         const serialText = await serialResp.text();
         serialData = parseCSV(serialText);
@@ -72,8 +68,11 @@ async function loadCSV() {
 
         console.log(`Loaded ${serialData.length} serials`);
         console.log(`Loaded ${modelData.length} models`);
+
     } catch (error) {
+
         console.error(error);
+
         document.getElementById('result').innerHTML =
             '<div class="not-found">Error loading CSV files.</div>';
     }
@@ -83,15 +82,23 @@ async function loadCSV() {
  * CSV Parser
  **************************************************/
 function parseCSV(text) {
+
     const rows = text.trim().split('\n');
-    const headers = rows[0].split(',').map(h => h.trim());
+
+    const headers = rows[0]
+        .split(',')
+        .map(h => h.trim());
 
     return rows.slice(1).map(row => {
+
         const values = row.split(',');
+
         let obj = {};
+
         headers.forEach((header, index) => {
             obj[header] = values[index]?.trim() || "";
         });
+
         return obj;
     });
 }
@@ -100,76 +107,106 @@ function parseCSV(text) {
  * Lookup Function
  **************************************************/
 function lookupSerial() {
+
     const inputBox = document.getElementById('serialInput');
     const serial = inputBox.value.trim();
+
     if (!serial) return;
 
-    // Hide previous results and panels
-    document.getElementById("result").style.display = "none";
-    document.querySelector(".page-layout").style.display = "none";
+    // ALWAYS clear panels first
+    clearMenus();
 
-    const foundSerial = serialData.find(x => x.SerialNumber === serial);
+    const foundSerial = serialData.find(
+        x => x.SerialNumber === serial
+    );
 
     if (!foundSerial) {
+
         document.getElementById('result').innerHTML =
             '<div class="not-found">Serial Number Not Found</div>';
-        document.getElementById("result").style.display = "block";
+
         return;
     }
 
-    const foundModel = modelData.find(x => x.product === foundSerial.Product);
+    const foundModel = modelData.find(
+        x => x.product === foundSerial.Product
+    );
 
     document.getElementById('result').innerHTML = `
-
+        <div><span class="label">Serial Number:</span> ${foundSerial.SerialNumber}</div>
         <div><span class="label">Product:</span> ${foundSerial.Product}</div>
-
+        <div><span class="label">Product Name:</span> ${foundSerial.ProductName}</div>
     `;
-    document.getElementById("result").style.display = "block";
 
-    if (!foundModel) return;
+    if (!foundModel) {
 
-    // Build the 4-column resource menus
-    buildMenu("setup-resources", foundModel, setupMenu);
-    buildMenu("network-resources", foundModel, networkMenu);
-    buildMenu("maintenance-resources", foundModel, maintenanceMenu);
-    buildMenu("advanced-resources", foundModel, advancedMenu);
+        document.getElementById("left-panel").innerHTML =
+            "<h2>Resources</h2><div></div>";
 
-    // Show the 4 columns now
-    document.querySelector(".page-layout").style.display = "grid";
+        document.getElementById("right-panel").innerHTML =
+            "<h2>Quick Links</h2><div></div>";
 
-    // Focus and select input for next search
+        return;
+    }
+
+    buildMenu("left-panel", foundModel, leftMenu, "Resources");
+    buildMenu("right-panel", foundModel, rightMenu, "Quick Links");
+
     inputBox.focus();
     inputBox.select();
 }
 
 /**************************************************
- * Build Dynamic Menus for a Column
+ * Clear Panels
  **************************************************/
-function buildMenu(containerId, dataRow, menuFields) {
+function clearMenus() {
+
+    document.getElementById("left-panel").innerHTML =
+        "<h2>Resources</h2>";
+
+    document.getElementById("right-panel").innerHTML =
+        "<h2>Quick Links</h2>";
+}
+
+/**************************************************
+ * Build Dynamic Menus
+ **************************************************/
+function buildMenu(containerId, dataRow, menuFields, title) {
+
     const container = document.getElementById(containerId);
+
     if (!container) return;
 
-    container.innerHTML = ""; // clear previous links
+    container.innerHTML = `<h2>${title}</h2>`;
+
     let linkCount = 0;
 
     menuFields.forEach(item => {
+
         const url = dataRow[item.field];
+
         if (!url || url.trim() === "") return;
 
         const a = document.createElement("a");
+
         a.href = url;
         a.target = "_blank";
         a.textContent = item.label;
         a.className = "resource-link";
+
         container.appendChild(a);
+        container.appendChild(document.createElement("br"));
 
         linkCount++;
     });
 
     if (linkCount === 0) {
+
         const msg = document.createElement("div");
+
         msg.className = "no-links";
         msg.textContent = "No resources available";
+
         container.appendChild(msg);
     }
 }
@@ -179,6 +216,7 @@ function buildMenu(containerId, dataRow, menuFields) {
  **************************************************/
 document.getElementById('serialInput')
     .addEventListener('keydown', function(event) {
+
         if (event.key === 'Enter') {
             lookupSerial();
         }

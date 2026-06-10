@@ -1,0 +1,48 @@
+Column 1: Setup & Installation
+
+Product Page
+Manual
+Win Setup
+Mac Setup
+BT Win Setup
+BT Mac Setup
+L/W Win Setup
+L/W Mac Setup
+USB Win Setup
+USB Mac Setup
+No WPS Setup
+WPS Setup
+
+Column 2: Network & Connectivity
+
+Assign Static IP
+Auto Connect ON/OFF
+Reset Network
+Reset BT
+Reset BT & Network
+Pair with iOS
+Setup WiFi Dongle
+CloudPRNT Setup
+WebPRNT Setup
+CloudPRNT Demo
+
+Column 3: Device Maintenance & Troubleshooting
+
+LED Errors
+Faded/Missing Dots
+Maintenance
+Cutter Reset
+Reset PIN on Win
+Disable DHCP Timeout
+
+Column 4: Advanced Features & Settings
+
+Density Adjustment
+Firmware Update
+OPOS Setup
+Enb/Dsbl HoldPrint
+Change Emulation
+Change BT Mode
+Browser Margins
+Quick Setup Utility
+StarPRNT SDK
