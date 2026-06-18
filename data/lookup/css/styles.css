@@ -64,8 +64,8 @@ h1, h2 {
 
 /* Results box */
 .lookup-results {
-    flex: 0;           /* takes remaining space */
-    min-width: 265px;
+    width: fit-content;
+    max-width: 100%;
     background: #f9f9f9;
     background-color: #fffbe6;
     padding: 5px;
